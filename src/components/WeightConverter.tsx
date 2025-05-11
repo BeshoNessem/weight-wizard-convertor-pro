@@ -62,8 +62,8 @@ const WeightConverter: React.FC = () => {
 
   return (
     <div className="flex justify-center w-full">
-      <Card className="w-full max-w-md p-6 shadow-lg">
-        <div className="flex items-center justify-center mb-6 space-x-2">
+      <Card className="w-full p-5 shadow-lg rounded-xl">
+        <div className="flex items-center justify-center mb-5 space-x-2">
           <Weight className="w-6 h-6 text-blue-500" />
           <h2 className="text-2xl font-bold text-center text-blue-700">محول الوزن</h2>
         </div>
@@ -76,10 +76,11 @@ const WeightConverter: React.FC = () => {
             <Input
               id="weightValue"
               type="text"
+              inputMode="decimal"
               placeholder="أدخل القيمة"
               value={value}
               onChange={handleValueChange}
-              className="text-right"
+              className="text-right text-lg h-14"
               dir="rtl"
             />
           </div>
@@ -90,12 +91,12 @@ const WeightConverter: React.FC = () => {
                 تحويل من
               </label>
               <Select value={fromUnit} onValueChange={handleFromUnitChange}>
-                <SelectTrigger id="fromUnit" className="text-right" dir="rtl">
+                <SelectTrigger id="fromUnit" className="text-right h-14 text-lg" dir="rtl">
                   <SelectValue placeholder="اختر وحدة" />
                 </SelectTrigger>
                 <SelectContent>
                   {weightUnits.map((unit) => (
-                    <SelectItem key={`from-${unit.value}`} value={unit.value} className="text-right">
+                    <SelectItem key={`from-${unit.value}`} value={unit.value} className="text-right text-lg">
                       {unit.arabicLabel}
                     </SelectItem>
                   ))}
@@ -108,12 +109,12 @@ const WeightConverter: React.FC = () => {
                 تحويل إلى
               </label>
               <Select value={toUnit} onValueChange={handleToUnitChange}>
-                <SelectTrigger id="toUnit" className="text-right" dir="rtl">
+                <SelectTrigger id="toUnit" className="text-right h-14 text-lg" dir="rtl">
                   <SelectValue placeholder="اختر وحدة" />
                 </SelectTrigger>
                 <SelectContent>
                   {weightUnits.map((unit) => (
-                    <SelectItem key={`to-${unit.value}`} value={unit.value} className="text-right">
+                    <SelectItem key={`to-${unit.value}`} value={unit.value} className="text-right text-lg">
                       {unit.arabicLabel}
                     </SelectItem>
                   ))}
@@ -122,13 +123,13 @@ const WeightConverter: React.FC = () => {
             </div>
           </div>
 
-          <div className="mt-8 p-4 bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg">
+          <div className="mt-6 p-4 bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg">
             <div className="text-center">
               <p className="text-sm text-gray-600 mb-1">النتيجة</p>
               <div className="flex items-center justify-center">
-                <p className="text-3xl font-bold text-blue-700">
+                <p className="text-4xl font-bold text-blue-700">
                   {value ? formatResult(result) : '0'} 
-                  <span className="text-base text-blue-500 ml-1">
+                  <span className="text-base text-blue-500 mr-1">
                     {getUnitSymbol(toUnit)}
                   </span>
                 </p>
